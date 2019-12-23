@@ -1,0 +1,12 @@
+[Unit]
+Description=tshock
+After=network.target
+
+[Service]
+Type=simple
+User=terraria
+WorkingDirectory=/home/terraria/tshock
+ExecStart=/usr/bin/screen -DmS terraria /usr/bin/mono TerrariaServer.exe -world world.wld -autocreate 1
+
+[Install]
+WantedBy=multi-user.target
