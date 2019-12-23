@@ -11,4 +11,4 @@ runcmd:
         - apt-get install -y mono-devel
         - wget -O /tmp/tshock.zip "https://github.com/Pryaxis/TShock/releases/download/v4.3.26/tshock_4.3.26.zip"
         - unzip /tmp/tshock.zip -d /home/terraria/tshock
-        - chown terraria:terraria /home/terraria/tshock
+        - chown -R terraria:terraria /home/terraria/tshock
