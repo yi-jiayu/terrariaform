@@ -22,6 +22,24 @@ resource "digitalocean_droplet" "terraria" {
   user_data = templatefile("cloud-init.yaml", { ssh_public_key = file(var.ssh_public_key_file) })
 }
 
+resource "digitalocean_firewall" "terraria" {
+  name = "terraria"
+
+  droplet_ids = [digitalocean_droplet.terraria.id]
+
+  inbound_rule {
+    protocol         = "tcp"
+    port_range       = "22"
+    source_addresses = ["0.0.0.0/0", "::/0"]
+  }
+
+  inbound_rule {
+    protocol         = "tcp"
+    port_range       = "7777"
+    source_addresses = ["0.0.0.0/0", "::/0"]
+  }
+}
+
 output "ip" {
   value = digitalocean_droplet.terraria.ipv4_address
 }
