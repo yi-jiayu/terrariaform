@@ -1,6 +1,6 @@
 #cloud-config
 users:
-  - name: terraria
+        - name: terraria
 packages:
         - unzip
 runcmd:
@@ -9,5 +9,6 @@ runcmd:
         - echo "deb https://download.mono-project.com/repo/ubuntu stable-bionic main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list
         - apt-get update
         - apt-get install -y mono-devel
-        - wget -P /home/terraria "https://github.com/Pryaxis/TShock/releases/download/v4.3.26/tshock_4.3.26.zip"
-        - unzip /home/terraria/tshock_4.3.26.zip -d /home/terraria/tshock_4.3.26
+        - wget -O /tmp/tshock.zip "https://github.com/Pryaxis/TShock/releases/download/v4.3.26/tshock_4.3.26.zip"
+        - unzip /tmp/tshock.zip -d /home/terraria/tshock
+        - chown terraria:terraria /home/terraria/tshock
