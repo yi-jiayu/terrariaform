@@ -1,11 +1,6 @@
 #cloud-config
 users:
   - name: terraria
-    groups: sudo
-    shell: /bin/bash
-    sudo: ['ALL=(ALL) NOPASSWD:ALL']
-    ssh-authorized-keys:
-      - ${ssh_public_key}
 packages:
         - unzip
 runcmd:
@@ -15,4 +10,4 @@ runcmd:
         - apt-get update
         - apt-get install -y mono-devel
         - wget -P /home/terraria "https://github.com/Pryaxis/TShock/releases/download/v4.3.26/tshock_4.3.26.zip"
-        - unzip /home/terraria/tshock_4.3.26.zip -d =home/terraria/tshock_4.3.26
+        - unzip /home/terraria/tshock_4.3.26.zip -d /home/terraria/tshock_4.3.26

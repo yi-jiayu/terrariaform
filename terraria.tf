@@ -19,7 +19,7 @@ resource "digitalocean_droplet" "terraria" {
   region = "sgp1"
   size   = "s-2vcpu-2gb"
   ssh_keys = [digitalocean_ssh_key.terraria.fingerprint]
-  user_data = templatefile("cloud-init.yaml", { ssh_public_key = file(var.ssh_public_key_file) })
+  user_data = file("cloud-init.yaml")
 }
 
 resource "digitalocean_firewall" "terraria" {
