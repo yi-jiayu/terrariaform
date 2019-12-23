@@ -22,3 +22,6 @@ resource "digitalocean_droplet" "terraria" {
   user_data = templatefile("cloud-init.yaml", { ssh_public_key = file(var.ssh_public_key_file) })
 }
 
+output "ip" {
+  value = digitalocean_droplet.terraria.ipv4_address
+}
