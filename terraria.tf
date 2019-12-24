@@ -22,7 +22,10 @@ resource "digitalocean_droplet" "terraria" {
   size       = "s-2vcpu-2gb"
   monitoring = true
   ssh_keys   = [digitalocean_ssh_key.terraria.fingerprint]
-  user_data  = templatefile("cloud-init.yaml", { tshock_service_file : filebase64("tshock.service") })
+  user_data = templatefile("cloud-init.yaml", {
+    ssh_public_key : digitalocean_ssh_key.terraria.public_key,
+    tshock_service_file : filebase64("tshock.service")
+  })
 }
 
 resource "digitalocean_firewall" "terraria" {
