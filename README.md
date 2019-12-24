@@ -23,22 +23,20 @@ You should have:
 4. Add your DigitalOcean personal access token to `terraform.tfvars`.
 5. Run `terraform apply`. This will output the server's IP address when
    complete.
-6. Wait for a while after `terraform apply` completes for the server to be
-   ready.
-7. Launch Terraria and connect to the server at its IP address on port 7777.
+6. Monitor the server setup using `ssh -i id_terraria root@$(terraform output
+   ip) tail -f /var/log/cloud-init-output.log`. The setup is complete once you
+   see a line starting with `Cloud-init ... finished`.
+7. At this point, TShock should have started and will take some time to create
+   a new world.
+8. Launch Terraria and connect to the server at its IP address on port 7777.
 
 ## Managing your server
 
-`terraform apply` will output the IP address of the newly created server. You
-can connect to it using the SSH key pair you provided, for example with `ssh -i
-id_terraria root@$(terraform output ip)`.
+To connect to the server, run `ssh -i id_terraria root@$(terraform output ip)`.
 
-The server setup commands will still be running after `terraform apply`
-completes. While connected to the droplet, you can monitor the setup process
-using `less +F /var/log/cloud-init-output.log`.
+To interact with the TShock process, run `sudo -u terraria screen -r tshock` on
+the server. You will need to do this to see the auth code to become a  super
+admin.
 
-Once done, the TShock server itself will be running inside a screen session
-managed by systemd. A new small world will automatically be generated the first
-time it starts. To interact with the TShock process, you have to attach to the
-screen session as the `terraria` user: `sudo -u terraria screen -r terraria`.
-
+Hit <kbd>Control</kbd> + <kbd>A</kbd> and then <kbd>D</kbd> to detach from the
+screen without stopping the TShock process.
