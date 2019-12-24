@@ -13,5 +13,5 @@ runcmd:
         - unzip /tmp/tshock.zip -d /home/terraria/tshock
         - chown -R terraria:terraria /home/terraria/tshock
         - curl "https://raw.githubusercontent.com/yi-jiayu/terraria-server/ce7babab9eae9c4d1b9da3014879ddf17c6bcfba/tshock.service" > /etc/systemd/system/tshock.service
-        - systemd enable tshock
-        - systemd start tshock
+        - systemctl enable tshock
+        - systemctl start tshock
