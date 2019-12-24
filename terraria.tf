@@ -10,6 +10,12 @@ variable "ssh_public_key_file" {
   description = "A path to an SSH public key file to use"
 }
 
+variable "server_name" {
+  type = string
+  default = "Terrariaform"
+  description = "Will be displayed in the list of previously-connected servers when connecting in-game"
+}
+
 resource "digitalocean_ssh_key" "terraria" {
   name       = "id_terraria"
   public_key = file(var.ssh_public_key_file)

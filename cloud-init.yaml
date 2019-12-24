@@ -5,6 +5,7 @@ users:
     ssh_authorized_keys:
       - ${ssh_public_key}
 packages:
+  - jq
   - unzip
 write_files:
   - path: /etc/systemd/system/tshock.service
@@ -18,6 +19,7 @@ runcmd:
   - apt-get install -y mono-xsp4
   - wget -O /tmp/tshock.zip "https://github.com/Pryaxis/TShock/releases/download/v4.3.26/tshock_4.3.26.zip"
   - unzip /tmp/tshock.zip -d /home/terraria/tshock
+  - jq '.ServerName = "${server_name}" | .UseServerName = true' /home/terraria/tshock/tshock/config.json > /home/terraria/tshock/tshock/config.json~ && mv /home/terraria/tshock/tshock/config.json~ /home/terraria/tshock/tshock/config.json
   - chown -R terraria:terraria /home/terraria/tshock
   - systemctl enable tshock
   - systemctl start tshock
