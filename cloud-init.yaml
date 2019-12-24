@@ -4,6 +4,10 @@ users:
           shell: /bin/bash
 packages:
         - unzip
+write_files:
+        - path: /etc/systemd/system/tshock.service
+          encoding: b64
+          content: ${tshock_service_file}
 runcmd:
         - apt-get install gnupg ca-certificates
         - apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
@@ -13,6 +17,5 @@ runcmd:
         - wget -O /tmp/tshock.zip "https://github.com/Pryaxis/TShock/releases/download/v4.3.26/tshock_4.3.26.zip"
         - unzip /tmp/tshock.zip -d /home/terraria/tshock
         - chown -R terraria:terraria /home/terraria/tshock
-        - curl "https://raw.githubusercontent.com/yi-jiayu/terraria-server/1ffee61d0b3e3755d1fc4ea361ac5768aaf45413/tshock.service" > /etc/systemd/system/tshock.service
         - systemctl enable tshock
         - systemctl start tshock
