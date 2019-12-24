@@ -8,7 +8,7 @@ runcmd:
         - apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
         - echo "deb https://download.mono-project.com/repo/ubuntu stable-bionic main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list
         - apt-get update
-        - apt-get install -y mono-devel
+        - apt-get install -y mono-xsp4
         - wget -O /tmp/tshock.zip "https://github.com/Pryaxis/TShock/releases/download/v4.3.26/tshock_4.3.26.zip"
         - unzip /tmp/tshock.zip -d /home/terraria/tshock
         - chown -R terraria:terraria /home/terraria/tshock
