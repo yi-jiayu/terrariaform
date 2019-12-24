@@ -12,6 +12,6 @@ runcmd:
         - wget -O /tmp/tshock.zip "https://github.com/Pryaxis/TShock/releases/download/v4.3.26/tshock_4.3.26.zip"
         - unzip /tmp/tshock.zip -d /home/terraria/tshock
         - chown -R terraria:terraria /home/terraria/tshock
-        - curl "https://raw.githubusercontent.com/yi-jiayu/terraria-server/ce7babab9eae9c4d1b9da3014879ddf17c6bcfba/tshock.service" > /etc/systemd/system/tshock.service
+        - curl "https://raw.githubusercontent.com/yi-jiayu/terraria-server/1ffee61d0b3e3755d1fc4ea361ac5768aaf45413/tshock.service" > /etc/systemd/system/tshock.service
         - systemctl enable tshock
         - systemctl start tshock
