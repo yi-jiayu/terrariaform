@@ -1,6 +1,7 @@
 #cloud-config
 users:
         - name: terraria
+          shell: /bin/bash
 packages:
         - unzip
 runcmd:
