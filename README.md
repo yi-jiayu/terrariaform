@@ -12,21 +12,20 @@ You should have:
    (https://learn.hashicorp.com/terraform/getting-started/install.html)
 2. A DigitalOcean personal access token
    (https://www.digitalocean.com/docs/api/create-personal-access-token/)
-3. An SSH key pair which you have not already added to DigitalOcean (you can
-   create one using `ssh-keygen -f id_terraria -t ed25519 -N '' -C ''`)
 
 ## Quickstart
 
-1. Run `terraform init` in the project directory.
-2. Copy `terraform.tfvars.template` to `terraform.tfvars`: `cp
+1. Run create a new SSH key pair called `id_terraria`: `ssh-keygen -f
+   id_terraria -t ed25519 -N '' -C ''`
+2. Run `terraform init` in the project directory.
+3. Copy `terraform.tfvars.template` to `terraform.tfvars`: `cp
    terraform.tfvars.template terraform.tfvars`.
-3. Add your DigitalOcean personal access token and path to your SSH public key
-   to `terraform.tfvars`.
-4. Run `terraform apply` and take note of the IP address it outputs when
+4. Add your DigitalOcean personal access token to `terraform.tfvars`.
+5. Run `terraform apply`. This will output the server's IP address when
    complete.
-5. Wait for a while after `terraform apply` completes for the server to be
+6. Wait for a while after `terraform apply` completes for the server to be
    ready.
-6. Connect to the server at its IP address on port 7777.
+7. Launch Terraria and connect to the server at its IP address on port 7777.
 
 ## Managing your server
 

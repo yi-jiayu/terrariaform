@@ -1,4 +1,8 @@
+# Terraform input variables
 terraform.tfvars
+
+# Generated SSH keys
+id_terraria*
 
 # Created by https://www.gitignore.io/api/terraform
 # Edit at https://www.gitignore.io/?templates=terraform

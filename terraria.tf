@@ -5,7 +5,9 @@ provider "digitalocean" {
 }
 
 variable "ssh_public_key_file" {
-  type = string
+  type        = string
+  default     = "id_terraria.pub"
+  description = "A path to an SSH public key file to use"
 }
 
 resource "digitalocean_ssh_key" "terraria" {

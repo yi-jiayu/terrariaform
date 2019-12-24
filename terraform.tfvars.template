@@ -1,3 +1,5 @@
 do_token = ""
-ssh_public_key_file = ""
+
+# Uncomment and set this to use a different SSH public key
+# ssh_public_key_file = ""
 
