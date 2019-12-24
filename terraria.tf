@@ -14,12 +14,13 @@ resource "digitalocean_ssh_key" "terraria" {
 }
 
 resource "digitalocean_droplet" "terraria" {
-  image     = "ubuntu-18-04-x64"
-  name      = "terraria"
-  region    = "sgp1"
-  size      = "s-2vcpu-2gb"
-  ssh_keys  = [digitalocean_ssh_key.terraria.fingerprint]
-  user_data = file("cloud-init.yaml")
+  image      = "ubuntu-18-04-x64"
+  name       = "terraria"
+  region     = "sgp1"
+  size       = "s-2vcpu-2gb"
+  monitoring = true
+  ssh_keys   = [digitalocean_ssh_key.terraria.fingerprint]
+  user_data  = file("cloud-init.yaml")
 }
 
 resource "digitalocean_firewall" "terraria" {
