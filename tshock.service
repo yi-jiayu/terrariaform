@@ -6,7 +6,13 @@ After=network.target
 Type=simple
 User=terraria
 WorkingDirectory=/home/terraria/tshock
-ExecStart=/usr/bin/screen -DmS terraria /usr/bin/mono TerrariaServer.exe -world world.wld -autocreate 1
+ExecStart=/usr/bin/screen -DmS tshock /usr/bin/mono TerrariaServer.exe -world world.wld -autocreate 1
+
+# Send the exit keystrokes to the TShock process running in screen
+ExecStop=/usr/bin/screen -S tshock -p 0 -X stuff 'exit^M'
+
+# Sleep a bit to wait for TShock to exit cleanly
+ExecStop=/bin/sleep 5
 
 [Install]
 WantedBy=multi-user.target
